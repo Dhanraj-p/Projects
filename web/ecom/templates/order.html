@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+<style>
+body{
+    background-color: azure;
+}    
+</style>
+<body>
+<div class="container">
+<form action="ordernew" enctype="multipart/form-data" method="POST">
+{% csrf_token %}
+<center><h1>Orders</h1></center>
+<br>
+       <label for="" class="form-label">Order_id</label>
+       <input type="text" class="form-control" name="order_id">
+       <br>
+       <label for="" class="form-label">Employee_id</label>
+       <select name="employee_id" class="form-select">
+        {% for res in net %}
+        <option value="{{res.employee_id}}">{{res.name}}</option>
+        {% endfor %}
+       </select>
+       <br>    
+       <label for="" class="form-label">Category</label>
+       <select type="text" class="form-control" name="category">
+       {% for res in dha %}
+        <option value="{{res.category}}">{{res.category}}</option> 
+       {% endfor %}  
+       </select>
+       <br>
+       <label for="" class="form-label">Product</label>
+         <select name="product" class="form-select">
+        {% for pre in cat %}
+        <option value="{{pre.product}}">{{pre.product}}</option>
+        {% endfor %}
+       </select>
+        <br>
+        <label for="" class="form-label">Color</label>
+        <input type="text" class="form-control" name="color">
+        <br>
+        <label for="" class="form-label">Brand</label>
+        <input type="text" class="form-control" name="brand">
+        <br>
+        <label for="" class="form-label">Price</label>
+        <input type="text" class="form-control" name="price">
+        <br>
+        <label for="" class="form-label">Model</label>
+        <input type="text" class="form-control" name="model">
+        <br>
+        <label for="" class="form-label">Date</label>
+        <input type="text" class="form-control" name="date">
+        <br>
+      <center><input type="submit" class="btn btn-primary" value="submit"></center>
+</form>
+</div>
+    <h2>
+        {{result}}
+    </h2>
+</body>
+</html>
